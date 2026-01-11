@@ -1,6 +1,7 @@
 import React from 'react';
 import ListCard from '../_shared/ListCard';
 import { Bell } from 'lucide-react';
+import Title from '@/components/_shared/Title';
 
 export default function HomeScreen() {
   return (
@@ -45,11 +46,12 @@ export default function HomeScreen() {
         <div className='absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/30 rounded-full blur-3xl'></div>
         <div className='absolute -top-20 -left-20 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl'></div>
       </div>
-
       <div className='bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 mb-8'>
-        <h3 className='text-primary-blue text-sm font-bold mb-5 text-center'>
-          Progress Harian
-        </h3>
+        <div className='flex justify-center mb-4'>
+          <h3 className='font-bold flex items-center gap-2 bg-gradient-to-b from-black to-[#003EC0] bg-clip-text text-transparent text-base'>
+            Progress Harian
+          </h3>
+        </div>
         <div className='flex items-center'>
           <div className='flex-1 flex flex-col items-center gap-1 border-r border-gray-100'>
             <span className='text-gray-400 text-xs font-medium'>
@@ -66,24 +68,24 @@ export default function HomeScreen() {
         </div>
       </div>
       <div>
-        <h3 className='font-bold text-[#0f0c29] mb-4 text-lg'>
+        <Title level='h3' mb='mb-4'>
           Tugas dalam tenggat
-        </h3>
+        </Title>
         <div className='flex flex-col gap-2'>
           <ListCard
-            title='Tugas Bahasa Inggris: Past Tense'
+            title='Tugas Bahasa Inggris'
             description='22 November 2025'
-            icon='BI'
+            icon='bg-ind-icon'
           />
           <ListCard
-            title='Tugas Bahasa Inggris: Past Tense'
+            title='Tugas Bahasa Inggris'
             description='22 November 2025'
-            icon='BI'
+            icon='bg-eng-icon'
           />
           <ListCard
-            title='Tugas Bahasa Inggris: Past Tense'
+            title='Tugas Matematika'
             description='22 November 2025'
-            icon='BI'
+            icon='bg-math-icon'
           />
         </div>
       </div>

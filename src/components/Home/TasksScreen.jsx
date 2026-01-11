@@ -2,6 +2,8 @@ import React from 'react';
 import { ChevronRight, Clock } from 'lucide-react';
 import ListCard from '../_shared/ListCard';
 
+import DummyDataSets from '@/pages/dummyDatas';
+
 export default function TasksScreen() {
   return (
     <div className='px-6 pb-24 pt-6'>
@@ -17,7 +19,7 @@ export default function TasksScreen() {
         Berdasarkan Mata Pelajaran
       </h3>
       <div className='flex gap-4 overflow-x-auto pb-6 -mx-6 px-6 no-scrollbar snap-x'>
-        {SUBJECT_CARDS.map((card) => (
+        {coursesDummyData.map((card) => (
           <div
             key={card.id}
             className='snap-start min-w-[140px] bg-white p-5 rounded-[1.5rem] shadow-sm border border-gray-100 flex flex-col items-center gap-3 hover:border-[#4c3ae3] transition-colors cursor-pointer group'
@@ -29,10 +31,8 @@ export default function TasksScreen() {
               <ChevronRight size={14} className='text-gray-300' />
             </div>
             <div
-              className={`w-14 h-14 ${card.color} rounded-2xl flex items-center justify-center text-3xl mb-1 group-hover:scale-110 transition-transform`}
-            >
-              {card.icon}
-            </div>
+              className={`w-14 h-14 ${card.color} rounded-2xl flex items-center justify-center text-3xl mb-1 group-hover:scale-110 transition-transform bg-cover bg-no-repeat ${card.icon}`}
+            ></div>
           </div>
         ))}
       </div>
@@ -55,10 +55,37 @@ export default function TasksScreen() {
   );
 }
 
-const SUBJECT_CARDS = [
-  { id: 1, title: 'Bahasa Ind...', icon: 'BI', color: 'bg-red-50' },
-  { id: 2, title: 'Bahasa Ing...', icon: 'BING', color: 'bg-blue-50' },
-  { id: 3, title: 'Bahasa Jp...', icon: 'BJP', color: 'bg-orange-50' },
+const coursesDummyData = [
+  {
+    id: 1,
+    title: 'Bahasa Ind...',
+    progress: '0/12 bab dipelajari',
+    icon: 'bg-ind-icon',
+  },
+  {
+    id: 2,
+    title: 'Bahasa Ing...',
+    progress: '0/12 bab dipelajari',
+    icon: 'bg-eng-icon',
+  },
+  {
+    id: 3,
+    title: 'Matematika',
+    progress: '0/12 bab dipelajari',
+    icon: 'bg-math-icon',
+  },
+  {
+    id: 4,
+    title: 'Fisika',
+    progress: '0/12 bab dipelajari',
+    icon: 'bg-physc-icon',
+  },
+  {
+    id: 5,
+    title: 'Pendidikan....',
+    progress: '0/12 bab dipelajari',
+    icon: 'bg-pkn-icon',
+  },
 ];
 
 const TASKS = [
@@ -66,24 +93,18 @@ const TASKS = [
     id: 1,
     title: 'Tugas Matematika Wajib: Fungsi',
     date: '22 November 2025',
-    icon: '01',
+    icon: 'bg-math-icon',
   },
   {
     id: 2,
     title: 'Tugas Bahasa Inggris: Past Tense',
     date: '22 November 2025',
-    icon: '02',
+    icon: 'bg-eng-icon',
   },
   {
     id: 3,
     title: 'Tugas Fisika: Kinematika',
     date: '23 November 2025',
-    icon: '03',
-  },
-  {
-    id: 4,
-    title: 'Tugas Biologi: Sel Hewan',
-    date: '24 November 2025',
-    icon: '04',
+    icon: 'bg-physc-icon',
   },
 ];

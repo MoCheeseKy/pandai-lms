@@ -40,6 +40,11 @@
 
 @theme inline {
   --background-image-logo-only: url('/images/logo-only.svg');
+  --background-image-eng-icon: url('/images/eng-icon.svg');
+  --background-image-ind-icon: url('/images/ind-icon.svg');
+  --background-image-math-icon: url('/images/math-icon.svg');
+  --background-image-physc-icon: url('/images/physc-icon.svg');
+  --background-image-pkn-icon: url('/images/pkn-icon.svg');
 
   --color-primary-blue: #0041c9;
   --color-primary-purple: #a241ff;
