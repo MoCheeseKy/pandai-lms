@@ -29,18 +29,21 @@ export default function Course() {
         <div className='flex flex-col gap-4'>
           {DummyDataSets?.map((course) => {
             return (
-              // <--- Tambahkan return
               course?.title ===
                 courseName
                   ?.replace(/-/g, ' ')
                   ?.replace(/\b\w/g, (l) => l.toUpperCase()) &&
               course?.chapters?.map((chapter) => (
-                <ListCard
+                <Link
                   key={chapter?.chapterId}
-                  title={TruncateText(chapter?.chapterTitle, 4)}
-                  description={`${chapter?.status}`}
-                  icon={course?.icon}
-                />
+                  href={`/${courseName}/${chapter?.chapterId}`}
+                >
+                  <ListCard
+                    title={TruncateText(chapter?.chapterTitle, 4)}
+                    description={`${chapter?.status}`}
+                    icon={course?.icon}
+                  />
+                </Link>
               ))
             );
           })}
