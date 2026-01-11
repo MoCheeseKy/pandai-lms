@@ -92,9 +92,9 @@ const DummyDataSets = [
             question:
               'Ketika diminta membuktikan langkah basis (n=1), apa yang Anda rasakan?',
             options: [
-              'A. Sangat mudah, tinggal substitusi angka 1.',
-              'B. Ragu-ragu apakah hasilnya benar ruas kiri = ruas kanan.',
-              'C. Bingung bagian mana yang harus diganti dengan 1.',
+              'Sangat mudah, tinggal substitusi angka 1.',
+              'Ragu-ragu apakah hasilnya benar ruas kiri = ruas kanan.',
+              'Bingung bagian mana yang harus diganti dengan 1.',
             ],
           },
           {
@@ -103,9 +103,9 @@ const DummyDataSets = [
             question:
               'Bagaimana pendapat Anda mengenai perbedaan antara "Langkah Basis" dan "Langkah Induksi"?',
             options: [
-              'A. Sangat jelas, Basis itu cek awal, Induksi itu efek domino.',
-              'B. Terkadang tertukar konsepnya saat mengerjakan soal.',
-              'C. Saya tidak mengerti mengapa harus ada dua langkah tersebut.',
+              'Sangat jelas, Basis itu cek awal, Induksi itu efek domino.',
+              'Terkadang tertukar konsepnya saat mengerjakan soal.',
+              'Saya tidak mengerti mengapa harus ada dua langkah tersebut.',
             ],
           },
           {
@@ -114,9 +114,9 @@ const DummyDataSets = [
             question:
               'Seberapa percaya diri Anda membuktikan asumsi n=k ke n=k+1?',
             options: [
-              'A. Sangat percaya diri memanipulasi aljabarnya.',
-              'B. Berani mencoba, tapi sering macet di tengah jalan.',
-              'C. Tidak mau, aljabarnya terlalu rumit.',
+              'Sangat percaya diri memanipulasi aljabarnya.',
+              'Berani mencoba, tapi sering macet di tengah jalan.',
+              'Tidak mau, aljabarnya terlalu rumit.',
             ],
           },
           {
@@ -323,6 +323,36 @@ const DummyDataSets = [
               options: ['Asli (1, 2, 3...)', 'Pecahan', 'Negatif', 'Imajiner'],
               correctAnswer: 'Asli (1, 2, 3...)',
             },
+            {
+              id: 'mg6',
+              text: 'Habis dibagi 5 artinya angka satuannya...',
+              options: ['0 atau 5', 'Genap', 'Ganjil', '3'],
+              correctAnswer: '0 atau 5',
+            },
+            {
+              id: 'mg7',
+              text: 'Pada langkah induksi, kita mengasumsikan rumus benar untuk n=...',
+              options: ['k', '1', '100', 'x'],
+              correctAnswer: 'k',
+            },
+            {
+              id: 'mg8',
+              text: 'Setelah asumsi n=k, kita harus membuktikan kebenaran untuk n=...',
+              options: ['k + 1', 'k - 1', '2k', 'n'],
+              correctAnswer: 'k + 1',
+            },
+            {
+              id: 'mg9',
+              text: 'P(n) = n < 2^n. Untuk n=3, pernyataannya adalah...',
+              options: ['3 < 8 (Benar)', '3 > 8', '3 = 8', 'Salah'],
+              correctAnswer: '3 < 8 (Benar)',
+            },
+            {
+              id: 'mg10',
+              text: 'Jumlah n bilangan ganjil pertama adalah...',
+              options: ['n^2', '2n', 'n+1', 'n^3'],
+              correctAnswer: 'n^2',
+            },
           ],
         },
       },
@@ -341,9 +371,9 @@ const DummyDataSets = [
             question:
               'Ketika melihat soal cerita panjang tentang produksi barang, apa reaksi pertamamu?',
             options: [
-              'A. Langsung memisalkan variabel x dan y.',
-              'B. Membacanya berulang kali baru paham.',
-              'C. Pusing dan ingin melewati soal itu.',
+              'Langsung memisalkan variabel x dan y.',
+              'Membacanya berulang kali baru paham.',
+              'Pusing dan ingin melewati soal itu.',
             ],
           },
           {
@@ -352,9 +382,9 @@ const DummyDataSets = [
             question:
               'Bagaimana perasaanmu saat menggambar grafik dan menentukan Daerah Himpunan Penyelesaian (DHP)?',
             options: [
-              'A. Menyenangkan, seperti mewarnai daerah yang benar.',
-              'B. Sering ragu arah arsirannya ke dalam atau ke luar.',
-              'C. Sangat membingungkan, garisnya bertumpuk-tumpuk.',
+              'Menyenangkan, seperti mewarnai daerah yang benar.',
+              'Sering ragu arah arsirannya ke dalam atau ke luar.',
+              'Sangat membingungkan, garisnya bertumpuk-tumpuk.',
             ],
           },
           {
@@ -363,9 +393,9 @@ const DummyDataSets = [
             question:
               'Seberapa yakin kamu bisa membedakan Fungsi Objektif (Tujuan) dan Fungsi Kendala?',
             options: [
-              'A. Sangat yakin, Objektif itu "untung/biaya", Kendala itu "stok".',
-              'B. Bisa membedakan kalau soalnya sederhana.',
-              'C. Semuanya terlihat sama saja bagiku.',
+              'Sangat yakin, Objektif itu "untung/biaya", Kendala itu "stok".',
+              'Bisa membedakan kalau soalnya sederhana.',
+              'Semuanya terlihat sama saja bagiku.',
             ],
           },
           {
@@ -562,6 +592,36 @@ const DummyDataSets = [
               options: ['Naik', 'Turun', 'Tetap', 'Hilang'],
               correctAnswer: 'Naik',
             },
+            {
+              id: 'mg6',
+              text: 'Garis 2x + 3y = 12 memotong sumbu Y di titik...',
+              options: ['(0, 4)', '(4, 0)', '(0, 6)', '(6, 0)'],
+              correctAnswer: '(0, 4)',
+            },
+            {
+              id: 'mg7',
+              text: 'Daerah yang diarsir dan memenuhi semua syarat disebut...',
+              options: ['DHP', 'DPR', 'DKI', 'DNS'],
+              correctAnswer: 'DHP',
+            },
+            {
+              id: 'mg8',
+              text: 'Simbol "paling banyak" menggunakan tanda...',
+              options: ['<=', '>=', '>', '='],
+              correctAnswer: '<=',
+            },
+            {
+              id: 'mg9',
+              text: 'Titik (0,0) pada pertidaksamaan x + y >= 5 bernilai...',
+              options: ['Salah (0 >= 5)', 'Benar', 'Mungkin', 'Ragu'],
+              correctAnswer: 'Salah (0 >= 5)',
+            },
+            {
+              id: 'mg10',
+              text: 'Fungsi Z = 1000x + 500y. Jika x=1, y=2, nilai Z adalah...',
+              options: ['2000', '1500', '1000', '500'],
+              correctAnswer: '2000',
+            },
           ],
         },
       },
@@ -583,9 +643,9 @@ const DummyDataSets = [
             question:
               'Ketika diminta mencari (fog)(x), apa yang terlintas di pikiranmu?',
             options: [
-              'A. Paham, fungsi g dimasukkan ke dalam fungsi f.',
-              'B. Terbalik-balik, sering memasukkan f ke dalam g.',
-              'C. Bingung total, hurufnya terlalu banyak.',
+              'Paham, fungsi g dimasukkan ke dalam fungsi f.',
+              'Terbalik-balik, sering memasukkan f ke dalam g.',
+              'Bingung total, hurufnya terlalu banyak.',
             ],
           },
           {
@@ -594,9 +654,9 @@ const DummyDataSets = [
             question:
               'Bagaimana pendapatmu tentang mencari Invers Fungsi Pecahan?',
             options: [
-              'A. Mudah, ada rumus cepatnya.',
-              'B. Bisa, tapi butuh waktu lama untuk kali silang.',
-              'C. Sangat sulit dan membosankan.',
+              'Mudah, ada rumus cepatnya.',
+              'Bisa, tapi butuh waktu lama untuk kali silang.',
+              'Sangat sulit dan membosankan.',
             ],
           },
           {
@@ -604,9 +664,9 @@ const DummyDataSets = [
             type: 'multiple-choice',
             question: 'Seberapa percaya diri kamu menentukan Domain dan Range?',
             options: [
-              'A. Sangat percaya diri membaca grafik atau syarat fungsi.',
-              'B. Ragu-ragu, terutama jika ada akar atau pecahan.',
-              'C. Tidak mengerti bedanya Domain dan Range.',
+              'Sangat percaya diri membaca grafik atau syarat fungsi.',
+              'Ragu-ragu, terutama jika ada akar atau pecahan.',
+              'Tidak mengerti bedanya Domain dan Range.',
             ],
           },
           {
@@ -802,6 +862,36 @@ const DummyDataSets = [
               text: 'Bahan baku yang boleh masuk mesin disebut...',
               options: ['Domain', 'Range', 'Sisa', 'Limbah'],
               correctAnswer: 'Domain',
+            },
+            {
+              id: 'mg6',
+              text: 'Jika f(x) = x + 2, maka inversnya f^-1(x) adalah...',
+              options: ['x - 2', '2 - x', 'x + 2', '1/x'],
+              correctAnswer: 'x - 2',
+            },
+            {
+              id: 'mg7',
+              text: '(fog)(x) bisa dibaca sebagai...',
+              options: ['f bundaran g', 'f kali g', 'f bagi g', 'f tambah g'],
+              correctAnswer: 'f bundaran g',
+            },
+            {
+              id: 'mg8',
+              text: 'Fungsi Identitas I(x) memetakan x ke...',
+              options: ['x (dirinya sendiri)', '0', '1', '-x'],
+              correctAnswer: 'x (dirinya sendiri)',
+            },
+            {
+              id: 'mg9',
+              text: 'Domain fungsi pecahan f(x) = 1/x tidak boleh...',
+              options: ['0', '1', 'Negatif', 'Positif'],
+              correctAnswer: '0',
+            },
+            {
+              id: 'mg10',
+              text: 'Sifat asosiatif (fo(goh)) = ((fog)oh) pada komposisi fungsi...',
+              options: ['Berlaku', 'Tidak Berlaku', 'Kadang-kadang', 'Salah'],
+              correctAnswer: 'Berlaku',
             },
           ],
         },
