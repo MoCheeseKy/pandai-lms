@@ -36,7 +36,7 @@ export default function Course() {
               course?.chapters?.map((chapter) => (
                 <Link
                   key={chapter?.chapterId}
-                  href={`/${courseName}/${chapter?.chapterId}`}
+                  href={`/course/${courseName}/${chapter?.chapterId}`}
                 >
                   <ListCard
                     title={TruncateText(chapter?.chapterTitle, 4)}
