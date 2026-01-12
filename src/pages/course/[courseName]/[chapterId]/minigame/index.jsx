@@ -3,9 +3,6 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
   ChevronLeft,
-  Signal,
-  Wifi,
-  BatteryMedium,
   Home,
   X,
   Swords,
@@ -14,35 +11,25 @@ import {
   XCircle,
   Heart,
 } from 'lucide-react';
-
-// Import Data Dummy
-import DummyDataSets from '../../../../../../dummyDatas';
 import Title from '@/components/_shared/Title';
+import DummyDataSets from '../../../../../../dummyDatas';
 
 export default function MinigamePage() {
   const router = useRouter();
   const { courseName, chapterId } = router.query;
-
   // --- Data State ---
   const [minigameData, setMinigameData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
   // --- Game State ---
   const [gamePhase, setGamePhase] = useState('story');
   const [storyIndex, setStoryIndex] = useState(0);
-
-  // Question Index akan terus bertambah (0, 1, 2... 100...)
-  // Kita akan gunakan Modulo (%) untuk mengambil soal dari array agar looping terus
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
   // Health System
   const [heroHp, setHeroHp] = useState(100);
   const [enemyHp, setEnemyHp] = useState(100);
-
   // Stats Counter
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
-
   // Battle Logic State
   const [feedbackText, setFeedbackText] = useState(null);
   const [showAnswerModal, setShowAnswerModal] = useState(false);
@@ -76,8 +63,6 @@ export default function MinigamePage() {
     }
   }, [router.isReady, courseName, chapterId]);
 
-  // --- Handlers ---
-
   const handleNextStory = () => {
     if (storyIndex < storySequence.length - 1) {
       setStoryIndex((prev) => prev + 1);
@@ -88,12 +73,7 @@ export default function MinigamePage() {
 
   const handleAnswer = (selectedOption) => {
     if (!minigameData) return;
-
-    // Tutup Modal
     setShowAnswerModal(false);
-
-    // LOGIK MODULO: Ambil soal berdasarkan sisa bagi
-    // Contoh: Soal ada 5. Jika index ke-6, maka ambil soal ke-1 (6 % 5 = 1)
     const actualQuestionIndex =
       currentQuestionIndex % minigameData.questions.length;
     const currentQ = minigameData.questions[actualQuestionIndex];
@@ -101,15 +81,11 @@ export default function MinigamePage() {
     const isCorrect = selectedOption === currentQ.correctAnswer;
 
     if (isCorrect) {
-      // --- LOGIK SERANGAN (BENAR) ---
-      // Damage ke Alien fix 20 (Perlu 5x benar untuk menang)
       const damage = 20;
       setEnemyHp((prev) => Math.max(0, prev - damage));
       setFeedbackText('Rasakan itu dasar alien!!!');
       setCorrectCount((prev) => prev + 1);
     } else {
-      // --- LOGIK DISERANG (SALAH) ---
-      // Damage ke Budi fix 20 (5x salah = Mati/Game Over)
       const damage = 20;
       setHeroHp((prev) => Math.max(0, prev - damage));
       setFeedbackText('Aduh! Serangan meleset!');
@@ -118,18 +94,14 @@ export default function MinigamePage() {
   };
 
   const handleNextBattle = () => {
-    // 1. Cek HP Budi (Kalah)
     if (heroHp <= 0) {
       setGamePhase('result');
       return;
     }
-    // 2. Cek HP Alien (Menang)
     if (enemyHp <= 0) {
       setGamePhase('result');
       return;
     }
-
-    // 3. Jika belum ada yang mati, lanjut soal berikutnya (Looping)
     setCurrentQuestionIndex((prev) => prev + 1);
     setFeedbackText(null);
   };
@@ -141,7 +113,6 @@ export default function MinigamePage() {
       </div>
     );
 
-  // --- Component: Health Bar ---
   const HealthBar = ({ current, max, label, colorClass, align }) => (
     <div
       className={`flex flex-col w-[45%] ${
@@ -163,8 +134,6 @@ export default function MinigamePage() {
     </div>
   );
 
-  // --- VARIABLES FOR RENDER ---
-  // Gunakan Modulo di sini juga untuk render UI
   const actualQuestionIndex =
     currentQuestionIndex % minigameData.questions.length;
   const currentQ = minigameData.questions[actualQuestionIndex];
@@ -190,11 +159,8 @@ export default function MinigamePage() {
     }
   }
 
-  // --- VIEW: RESULT SCREEN (SCORE CARD) ---
   if (gamePhase === 'result') {
-    // KONDISI GAME SELESAI
-    const isAlienDefeated = enemyHp <= 0; // Menang
-    // Nilai = Sisa HP Budi (Jika Budi mati/HP 0, nilai 0)
+    const isAlienDefeated = enemyHp <= 0;
     const score = heroHp;
 
     let title = 'Misi Selesai!';
@@ -299,158 +265,154 @@ export default function MinigamePage() {
         <title>Minigame - {minigameData.gameTitle}</title>
       </Head>
 
-      <div className='min-h-screen bg-[#1c1c1e] flex justify-center items-center font-sans'>
-        <div className='w-full max-w-[400px] bg-white h-screen sm:h-[844px] sm:rounded-[3rem] overflow-hidden flex flex-col relative shadow-2xl'>
-          {/* Header */}
-          <div className='flex items-center gap-2 p-6 pt-18 fixed bg-white top-0 w-full z-999'>
-            <button
-              onClick={() => router.back()}
-              className='p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors'
-            >
-              <ChevronLeft size={28} className='text-gray-900' />
-            </button>
-            <Title mb='mb-0'>Melawan Alien</Title>
+      <div className='flex flex-col h-screen w-full bg-[#FBFCFF] font-sans overflow-hidden relative pt-12'>
+        {/* Header */}
+        <div className='flex items-center gap-2 p-6 pt-18 fixed bg-white top-0 w-full z-999'>
+          <button
+            onClick={() => router.back()}
+            className='p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors'
+          >
+            <ChevronLeft size={28} className='text-gray-900' />
+          </button>
+          <Title mb='mb-0'>Melawan Alien</Title>
+        </div>
+
+        {/* ================= GAME SCENE ================= */}
+        <div className='relative flex-1 bg-gray-100 overflow-hidden'>
+          {/* Background Placeholder */}
+          <div className='absolute inset-0 bg-black flex items-end justify-center'>
+            <div className='w-full h-1/3 bg-gradient-to-t from-gray-900 to-transparent opacity-50'></div>
           </div>
 
-          {/* ================= GAME SCENE ================= */}
-          <div className='relative flex-1 bg-gray-100 overflow-hidden'>
-            {/* Background Placeholder */}
-            <div className='absolute inset-0 bg-black flex items-end justify-center'>
-              <div className='w-full h-1/3 bg-gradient-to-t from-gray-900 to-transparent opacity-50'></div>
+          {/* HERO (Left) */}
+          <div
+            className={`absolute bottom-32 left-4 transition-all duration-500 ${
+              gamePhase === 'battle' && !feedbackText ? 'scale-105' : ''
+            }`}
+          >
+            <div className='w-32 h-48 bg-gray-800 border-2 border-white/20 rounded-xl flex items-center justify-center text-white/50 text-xs'>
+              Img: Budi
             </div>
+          </div>
 
-            {/* HERO (Left) */}
-            <div
-              className={`absolute bottom-32 left-4 transition-all duration-500 ${
-                gamePhase === 'battle' && !feedbackText ? 'scale-105' : ''
-              }`}
-            >
-              <div className='w-32 h-48 bg-gray-800 border-2 border-white/20 rounded-xl flex items-center justify-center text-white/50 text-xs'>
-                Img: Budi
-              </div>
+          {/* ENEMY (Right) */}
+          <div
+            className={`absolute bottom-32 right-4 transition-all duration-500 ${
+              gamePhase === 'battle' && feedbackText
+                ? 'animate-pulse opacity-80'
+                : ''
+            }`}
+          >
+            <div className='w-40 h-64 bg-gray-800 border-2 border-white/20 rounded-xl flex items-center justify-center text-white/50 text-xs'>
+              Img: Alien
             </div>
+          </div>
 
-            {/* ENEMY (Right) */}
-            <div
-              className={`absolute bottom-32 right-4 transition-all duration-500 ${
-                gamePhase === 'battle' && feedbackText
-                  ? 'animate-pulse opacity-80'
-                  : ''
-              }`}
-            >
-              <div className='w-40 h-64 bg-gray-800 border-2 border-white/20 rounded-xl flex items-center justify-center text-white/50 text-xs'>
-                Img: Alien
-              </div>
+          {/* Health Bars */}
+          {gamePhase === 'battle' && (
+            <div className='absolute top-28 left-0 w-full px-4 flex justify-between z-10'>
+              <HealthBar
+                current={heroHp}
+                max={100}
+                label='Budi'
+                colorClass='bg-green-500'
+                align='left'
+              />
+              <HealthBar
+                current={enemyHp}
+                max={100}
+                label='Alien'
+                colorClass='bg-red-500'
+                align='right'
+              />
             </div>
+          )}
 
-            {/* Health Bars */}
-            {gamePhase === 'battle' && (
-              <div className='absolute top-4 left-0 w-full px-4 flex justify-between z-10'>
-                <HealthBar
-                  current={heroHp}
-                  max={100}
-                  label='Budi'
-                  colorClass='bg-green-500'
-                  align='left'
-                />
-                <HealthBar
-                  current={enemyHp}
-                  max={100}
-                  label='Alien'
-                  colorClass='bg-red-500'
-                  align='right'
-                />
-              </div>
-            )}
+          {/* ================= POPUP MODAL JAWABAN ================= */}
+          {showAnswerModal && (
+            <div className='absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-6 animate-in fade-in duration-200'>
+              <div className='bg-white w-full max-h-[80%] overflow-y-auto rounded-3xl p-5 shadow-2xl border-4 border-yellow-400 animate-in zoom-in-95 duration-200'>
+                <div className='flex justify-between items-center mb-4'>
+                  <h3 className='text-lg font-bold text-gray-800 flex items-center gap-2'>
+                    <Swords size={20} className='text-orange-500' /> Pilih
+                    Serangan
+                  </h3>
+                  <button
+                    onClick={() => setShowAnswerModal(false)}
+                    className='p-1 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600'
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
 
-            {/* ================= POPUP MODAL JAWABAN ================= */}
-            {showAnswerModal && (
-              <div className='absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-6 animate-in fade-in duration-200'>
-                <div className='bg-white w-full max-h-[80%] overflow-y-auto rounded-3xl p-5 shadow-2xl border-4 border-yellow-400 animate-in zoom-in-95 duration-200'>
-                  <div className='flex justify-between items-center mb-4'>
-                    <h3 className='text-lg font-bold text-gray-800 flex items-center gap-2'>
-                      <Swords size={20} className='text-orange-500' /> Pilih
-                      Serangan
-                    </h3>
+                {/* Pertanyaan */}
+                <p className='text-sm text-gray-500 mb-4 pb-4 border-b border-gray-100'>
+                  {currentQ.text}
+                </p>
+
+                <div className='flex flex-col gap-3'>
+                  {currentQ.options.map((opt, idx) => (
                     <button
-                      onClick={() => setShowAnswerModal(false)}
-                      className='p-1 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600'
+                      key={idx}
+                      onClick={() => handleAnswer(opt)}
+                      className='w-full text-left bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold p-4 rounded-xl shadow-md active:scale-[0.98] transition-all border-b-4 border-orange-600 hover:brightness-105'
                     >
-                      <X size={20} />
+                      {opt}
                     </button>
-                  </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
-                  {/* Pertanyaan */}
-                  <p className='text-sm text-gray-500 mb-4 pb-4 border-b border-gray-100'>
-                    {currentQ.text}
-                  </p>
-
-                  <div className='flex flex-col gap-3'>
-                    {currentQ.options.map((opt, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleAnswer(opt)}
-                        className='w-full text-left bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold p-4 rounded-xl shadow-md active:scale-[0.98] transition-all border-b-4 border-orange-600 hover:brightness-105'
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
+          {/* ================= DIALOG BOX BAWAH ================= */}
+          <div className='absolute bottom-6 left-4 right-4 z-20'>
+            {activeSpeaker && (
+              <div
+                className={`absolute -top-4 ${
+                  activeSide === 'right' ? 'right-4' : 'left-0'
+                } z-30`}
+              >
+                <div className='bg-yellow-500 text-white font-bold px-6 py-1.5 rounded-t-xl rounded-br-xl shadow-md border-2 border-white text-sm'>
+                  {activeSpeaker}
                 </div>
               </div>
             )}
 
-            {/* ================= DIALOG BOX BAWAH ================= */}
-            <div className='absolute bottom-6 left-4 right-4 z-20'>
-              {activeSpeaker && (
-                <div
-                  className={`absolute -top-4 ${
-                    activeSide === 'right' ? 'right-4' : 'left-0'
-                  } z-30`}
-                >
-                  <div className='bg-yellow-500 text-white font-bold px-6 py-1.5 rounded-t-xl rounded-br-xl shadow-md border-2 border-white text-sm'>
-                    {activeSpeaker}
-                  </div>
+            <div className='bg-white/95 backdrop-blur-sm border-4 border-yellow-400 rounded-3xl p-5 shadow-2xl min-h-[140px] flex flex-col justify-between'>
+              <p className='text-gray-800 font-bold text-lg leading-snug pr-2'>
+                {activeText}
+              </p>
+
+              {/* --- CONTROLS --- */}
+
+              {/* 1. Tombol NEXT (Story atau Feedback) */}
+              {(gamePhase === 'story' ||
+                (gamePhase === 'battle' && feedbackText)) && (
+                <div className='flex justify-end mt-2'>
+                  <button
+                    onClick={
+                      gamePhase === 'story' ? handleNextStory : handleNextBattle
+                    }
+                    className='flex items-center gap-1 text-gray-500 font-bold text-sm hover:text-black transition-colors px-2 py-1'
+                  >
+                    Next <span className='text-lg'>{'>>'}</span>
+                  </button>
                 </div>
               )}
 
-              <div className='bg-white/95 backdrop-blur-sm border-4 border-yellow-400 rounded-3xl p-5 shadow-2xl min-h-[140px] flex flex-col justify-between'>
-                <p className='text-gray-800 font-bold text-lg leading-snug pr-2'>
-                  {activeText}
-                </p>
-
-                {/* --- CONTROLS --- */}
-
-                {/* 1. Tombol NEXT (Story atau Feedback) */}
-                {(gamePhase === 'story' ||
-                  (gamePhase === 'battle' && feedbackText)) && (
-                  <div className='flex justify-end mt-2'>
-                    <button
-                      onClick={
-                        gamePhase === 'story'
-                          ? handleNextStory
-                          : handleNextBattle
-                      }
-                      className='flex items-center gap-1 text-gray-500 font-bold text-sm hover:text-black transition-colors px-2 py-1'
-                    >
-                      Next <span className='text-lg'>{'>>'}</span>
-                    </button>
-                  </div>
-                )}
-
-                {/* 2. Tombol BUKA POPUP (Saat Battle & Belum Jawab) */}
-                {gamePhase === 'battle' && !feedbackText && (
-                  <div className='mt-4'>
-                    <button
-                      onClick={() => setShowAnswerModal(true)}
-                      className='w-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white font-bold py-3 rounded-xl shadow-lg active:scale-95 flex justify-center items-center gap-2 animate-pulse'
-                    >
-                      <Swords size={20} />
-                      Pilih Serangan
-                    </button>
-                  </div>
-                )}
-              </div>
+              {/* 2. Tombol BUKA POPUP (Saat Battle & Belum Jawab) */}
+              {gamePhase === 'battle' && !feedbackText && (
+                <div className='mt-4'>
+                  <button
+                    onClick={() => setShowAnswerModal(true)}
+                    className='w-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white font-bold py-3 rounded-xl shadow-lg active:scale-95 flex justify-center items-center gap-2 animate-pulse'
+                  >
+                    <Swords size={20} />
+                    Pilih Serangan
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
