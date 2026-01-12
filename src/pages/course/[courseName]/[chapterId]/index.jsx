@@ -174,12 +174,12 @@ const CourseDetail = () => {
                     <div className='relative w-full rounded-2xl overflow-hidden aspect-video bg-gray-900 shadow-lg group cursor-pointer'>
                       <iframe
                         className='w-full h-full'
-                        src='https://www.youtube.com/embed/mQcpXJKPRbQ?si=QAt2e5Bao_FGYjRD'
+                        src='https://www.youtube.com/embed/XL95jjINJ_0?si=odKDXqUlitRVRSg9'
                         title='YouTube video player'
-                        frameBorder='0'
+                        frameborder='0'
                         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                        referrerPolicy='strict-origin-when-cross-origin'
-                        allowFullScreen
+                        referrerpolicy='strict-origin-when-cross-origin'
+                        allowfullscreen
                       ></iframe>
                     </div>
                   </div>
