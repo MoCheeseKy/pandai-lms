@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 // Import Data Dummy
-import DummyDataSets from '@/pages/dummyDatas';
+import DummyDataSets from '../../../../../../dummyDatas';
 import Title from '@/components/_shared/Title';
 
 export default function MinigamePage() {

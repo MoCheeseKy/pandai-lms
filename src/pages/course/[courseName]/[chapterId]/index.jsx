@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import Title from '@/components/_shared/Title';
 import ListCard from '@/components/_shared/ListCard';
-import DummyDataSets from '@/pages/dummyDatas';
+import DummyDataSets from '../../../../../dummyDatas';
 import TruncateText from '@/lib/TruncateText';
 
 const CourseDetail = () => {

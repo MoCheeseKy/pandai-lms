@@ -2,7 +2,7 @@ import React from 'react';
 import { ChevronRight, Clock } from 'lucide-react';
 import ListCard from '../_shared/ListCard';
 
-import DummyDataSets from '@/pages/dummyDatas';
+import DummyDataSets from '../../../dummyDatas';
 
 export default function TasksScreen() {
   return (

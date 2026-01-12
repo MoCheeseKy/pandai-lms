@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import Title from '@/components/_shared/Title';
 import TruncateText from '@/lib/TruncateText';
-import DummyDataSets from '@/pages/dummyDatas';
+import DummyDataSets from '../../../../../../dummyDatas';
 
 export default function QuizPage() {
   const router = useRouter();

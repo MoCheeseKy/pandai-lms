@@ -5,7 +5,7 @@ import { ChevronLeft, Send, CheckCircle2 } from 'lucide-react';
 import Title from '@/components/_shared/Title';
 
 // Import Data Dummy
-import DummyDataSets from '@/pages/dummyDatas';
+import DummyDataSets from '../../../../../../dummyDatas';
 
 export default function SentimentPage() {
   const router = useRouter();

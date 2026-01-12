@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ListCard from '../_shared/ListCard';
 import Title from '@/components/_shared/Title';
 
-import DummyDataSets from '@/pages/dummyDatas';
+import DummyDataSets from '../../../dummyDatas';
 
 export default function CoursesScreen() {
   return (
