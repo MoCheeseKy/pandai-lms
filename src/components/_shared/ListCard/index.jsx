@@ -46,7 +46,6 @@ export default function ListCard({
           </div>
 
           <button className='p-2 hover:bg-gray-50 rounded-full transition-colors'>
-            {/* Supaya interaktif, icon berubah arah jika isOpen true */}
             {isOpen ? (
               <ChevronDown size={28} className='text-gray-600' />
             ) : (
@@ -55,12 +54,9 @@ export default function ListCard({
           </button>
         </div>
 
-        {/* MODIFIKASI 2: Content Flexibel (Menerima JSX) */}
-        {/* Jika ada children (misal Video Player), render children. Jika tidak, render tombol gradient lama */}
         {children ? (
           <div className='w-full'>{children}</div>
         ) : (
-          // Fallback ke style lama jika hanya text (extendsDescription)
           extendsDescription && (
             <button className='w-full bg-gradient-to-b from-black to-[#0041C9] text-white py-4 px-5 flex justify-between items-center hover:bg-[#003B7B] transition-colors'>
               <span className='text-xs font-bold tracking-wide'>

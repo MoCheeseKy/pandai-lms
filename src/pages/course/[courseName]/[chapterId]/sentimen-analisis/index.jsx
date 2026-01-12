@@ -6,6 +6,7 @@ import Title from '@/components/_shared/Title';
 
 // Import Data Dummy
 import DummyDataSets from '@/pages/dummyDatas';
+
 export default function SentimentPage() {
   const router = useRouter();
   const { courseName, chapterId } = router.query;
