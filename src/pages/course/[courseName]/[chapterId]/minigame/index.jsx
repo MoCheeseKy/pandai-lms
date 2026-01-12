@@ -17,6 +17,7 @@ import {
 
 // Import Data Dummy
 import DummyDataSets from '@/pages/dummyDatas';
+import Title from '@/components/_shared/Title';
 
 export default function MinigamePage() {
   const router = useRouter();
@@ -219,16 +220,6 @@ export default function MinigamePage() {
     return (
       <div className='min-h-screen bg-[#1c1c1e] flex justify-center items-center font-sans'>
         <div className='w-full max-w-[400px] bg-white h-screen sm:h-[844px] sm:rounded-[3rem] overflow-hidden flex flex-col relative'>
-          {/* Status Bar */}
-          <div className='flex justify-between items-center px-6 py-3 text-xs font-bold text-gray-900 bg-white z-20'>
-            <span>09:22</span>
-            <div className='flex items-center gap-1.5'>
-              <Signal size={16} />
-              <Wifi size={16} />
-              <BatteryMedium size={20} />
-            </div>
-          </div>
-
           <div className='flex-1 flex flex-col items-center justify-center px-8 pb-10'>
             {/* Trophy Icon */}
             <div
@@ -310,27 +301,15 @@ export default function MinigamePage() {
 
       <div className='min-h-screen bg-[#1c1c1e] flex justify-center items-center font-sans'>
         <div className='w-full max-w-[400px] bg-white h-screen sm:h-[844px] sm:rounded-[3rem] overflow-hidden flex flex-col relative shadow-2xl'>
-          {/* Status Bar */}
-          <div className='flex justify-between items-center px-6 py-3 text-xs font-bold text-gray-900 bg-white z-20 relative'>
-            <span>09:22</span>
-            <div className='flex items-center gap-1.5'>
-              <Signal size={16} className='fill-black' />
-              <Wifi size={16} />
-              <BatteryMedium size={20} className='rotate-0 fill-black/10' />
-            </div>
-          </div>
-
           {/* Header */}
-          <div className='flex items-center gap-2 px-4 py-2 z-20 relative bg-white shadow-sm'>
+          <div className='flex items-center gap-2 p-6 pt-18 fixed bg-white top-0 w-full z-999'>
             <button
               onClick={() => router.back()}
-              className='p-2 -ml-2 hover:bg-gray-100 rounded-full'
+              className='p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors'
             >
               <ChevronLeft size={28} className='text-gray-900' />
             </button>
-            <h1 className='text-lg font-bold text-[#0f172a] truncate'>
-              Budi Melawan Alien
-            </h1>
+            <Title mb='mb-0'>Melawan Alien</Title>
           </div>
 
           {/* ================= GAME SCENE ================= */}

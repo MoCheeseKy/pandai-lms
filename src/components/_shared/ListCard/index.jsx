@@ -73,11 +73,10 @@ export default function ListCard({
     );
   }
 
-  // --- Variant Default ---
   return (
     <div
       onClick={onClick}
-      className='bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between hover:border-primary-blue transition-colors cursor-pointer group mb-3'
+      className='bg-[linear-gradient(to_right,#E2EBFF,#FFFFFF,#FFFFFF,#FFFFFF)] p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between hover:border-primary-blue transition-colors cursor-pointer group'
     >
       <div className='flex items-center gap-4'>
         {/* MODIFIKASI 1: Icon Flexibel di variant default juga */}

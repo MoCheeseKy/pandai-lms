@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
-  Play,
   ChevronLeft,
   FileText,
   Gamepad2,
   MessageSquare,
   CheckSquare,
 } from 'lucide-react';
+import Title from '@/components/_shared/Title';
 import ListCard from '@/components/_shared/ListCard';
 import DummyDataSets from '@/pages/dummyDatas';
+import TruncateText from '@/lib/TruncateText';
 
 const CourseDetail = () => {
   const router = useRouter();
@@ -141,21 +142,19 @@ const CourseDetail = () => {
     );
 
   return (
-    <div className='min-h-screen bg-gray-50 p-6 font-sans max-w-md mx-auto'>
-      <div className='flex items-center mb-6'>
+    <div className='min-h-screen bg-gray-50 p-6 font-sans max-w-md mx-auto pt-12'>
+      <div className='flex items-center gap-2 pb-6 pt-18 fixed bg-white top-0 w-full z-999'>
         <button
           onClick={() => router.back()}
-          className='mr-4 text-gray-500 hover:text-black transition-colors'
+          className='p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors'
         >
-          <ChevronLeft size={28} />
+          <ChevronLeft size={28} className='text-gray-900' />
         </button>
-        <h1 className='text-xl font-bold text-[#0f0c29] leading-snug'>
-          {currentChapter.chapterTitle}
-        </h1>
+        <Title mb='mb-0'>{TruncateText(currentChapter.chapterTitle, 3)}</Title>
       </div>
 
       {/* LIST CONTENT */}
-      <div className='flex flex-col gap-3'>
+      <div className='flex flex-col gap-3 pt-24'>
         {contentList.map((item) => {
           const isOpen = activeCardId === item.id;
 
