@@ -32,7 +32,7 @@ export default function HomeScreen() {
 
       <div className='relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 shadow-xl shadow-blue-200/50 group'>
         <div className='absolute inset-0 bg-gradient-to-b from-primary-blue to-[#7d6dfb]  '>
-          <div className='h-full p-6 flex flex-col items-center text-center bg-fire-panda bg-no-repeat bg-[center_bottom_-1rem]'>
+          <div className='h-full p-6 flex flex-col items-center text-center bg-fire-panda bg-no-repeat bg-[position:50%_calc(100%_+_1rem)]'>
             <span className='bg-white/20 backdrop-blur-md text-white text-[10px] font-medium px-4 py-1.5 rounded-full mb-4 border border-white/10'>
               19 Desember 2025
             </span>
