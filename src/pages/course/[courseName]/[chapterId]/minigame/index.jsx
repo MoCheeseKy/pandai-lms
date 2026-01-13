@@ -17,24 +17,23 @@ import DummyDataSets from '../../../../../../dummyDatas';
 export default function MinigamePage() {
   const router = useRouter();
   const { courseName, chapterId } = router.query;
-  // --- Data State ---
+
   const [minigameData, setMinigameData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // --- Game State ---
+
   const [gamePhase, setGamePhase] = useState('story');
   const [storyIndex, setStoryIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  // Health System
+
   const [heroHp, setHeroHp] = useState(100);
   const [enemyHp, setEnemyHp] = useState(100);
-  // Stats Counter
+
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
-  // Battle Logic State
+
   const [feedbackText, setFeedbackText] = useState(null);
   const [showAnswerModal, setShowAnswerModal] = useState(false);
 
-  // --- Hardcoded Story ---
   const storySequence = [
     { speaker: 'Budi', text: 'Wah ada alien iiii takotnye....', side: 'left' },
     {
@@ -44,7 +43,6 @@ export default function MinigamePage() {
     },
   ];
 
-  // --- Load Data ---
   useEffect(() => {
     if (!router.isReady) return;
     if (courseName && chapterId) {
@@ -159,6 +157,18 @@ export default function MinigamePage() {
     }
   }
 
+  const heroImageVar =
+    heroHp <= 40
+      ? 'var(--background-image-budi-low)'
+      : 'var(--background-image-budi-full)';
+
+  let enemyImageVar = 'var(--background-image-alien-full)';
+  if (enemyHp <= 20) {
+    enemyImageVar = 'var(--background-image-alien-low)';
+  } else if (enemyHp <= 60) {
+    enemyImageVar = 'var(--background-image-alien-half)';
+  }
+
   if (gamePhase === 'result') {
     const isAlienDefeated = enemyHp <= 0;
     const score = heroHp;
@@ -185,9 +195,8 @@ export default function MinigamePage() {
 
     return (
       <div className='min-h-screen bg-[#1c1c1e] flex justify-center items-center font-sans'>
-        <div className='w-full max-w-[400px] bg-white h-screen sm:h-[844px] sm:rounded-[3rem] overflow-hidden flex flex-col relative'>
+        <div className='w-full max-w-[400px] bg-white h-screen sm:h-[844px] sm:rounded-[3rem] overflow-hidden flex flex-col relative pt-6'>
           <div className='flex-1 flex flex-col items-center justify-center px-8 pb-10'>
-            {/* Trophy Icon */}
             <div
               className={`w-32 h-32 rounded-full flex items-center justify-center mb-6 shadow-2xl ${bgTrophy}`}
             >
@@ -213,7 +222,6 @@ export default function MinigamePage() {
               {subtitle}
             </p>
 
-            {/* Score Card */}
             <div className='w-full bg-white border border-gray-100 rounded-3xl p-6 shadow-xl shadow-gray-200/50 mb-8'>
               <div className='text-center mb-6'>
                 <span className='text-sm text-gray-400 font-bold uppercase tracking-wider'>
@@ -246,7 +254,6 @@ export default function MinigamePage() {
               </div>
             </div>
 
-            {/* Action Button */}
             <button
               onClick={() => router.back()}
               className='w-full bg-[#1e1b4b] text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform shadow-lg'
@@ -266,7 +273,6 @@ export default function MinigamePage() {
       </Head>
 
       <div className='flex flex-col h-screen w-full bg-[#FBFCFF] font-sans overflow-hidden relative pt-12'>
-        {/* Header */}
         <div className='flex items-center gap-2 p-6 pt-18 fixed bg-white top-0 w-full z-999'>
           <button
             onClick={() => router.back()}
@@ -277,25 +283,25 @@ export default function MinigamePage() {
           <Title mb='mb-0'>Melawan Alien</Title>
         </div>
 
-        {/* ================= GAME SCENE ================= */}
-        <div className='relative flex-1 bg-gray-100 overflow-hidden'>
-          {/* Background Placeholder */}
-          <div className='absolute inset-0 bg-black flex items-end justify-center'>
+        <div
+          className='relative flex-1 bg-gray-100 overflow-hidden bg-cover bg-center'
+          style={{ backgroundImage: 'var(--background-image-minigame-bg)' }}
+        >
+          <div className='absolute inset-0 bg-minigame-bg flex items-end justify-center bg-opacity-20'>
             <div className='w-full h-1/3 bg-gradient-to-t from-gray-900 to-transparent opacity-50'></div>
           </div>
 
-          {/* HERO (Left) */}
           <div
             className={`absolute bottom-32 left-4 transition-all duration-500 ${
               gamePhase === 'battle' && !feedbackText ? 'scale-105' : ''
             }`}
           >
-            <div className='w-32 h-48 bg-gray-800 border-2 border-white/20 rounded-xl flex items-center justify-center text-white/50 text-xs'>
-              Img: Budi
-            </div>
+            <div
+              className='w-48 h-64 bg-contain bg-no-repeat bg-bottom drop-shadow-2xl'
+              style={{ backgroundImage: heroImageVar }}
+            />
           </div>
 
-          {/* ENEMY (Right) */}
           <div
             className={`absolute bottom-32 right-4 transition-all duration-500 ${
               gamePhase === 'battle' && feedbackText
@@ -303,12 +309,12 @@ export default function MinigamePage() {
                 : ''
             }`}
           >
-            <div className='w-40 h-64 bg-gray-800 border-2 border-white/20 rounded-xl flex items-center justify-center text-white/50 text-xs'>
-              Img: Alien
-            </div>
+            <div
+              className='w-56 h-72 bg-contain bg-no-repeat bg-bottom drop-shadow-2xl'
+              style={{ backgroundImage: enemyImageVar }}
+            />
           </div>
 
-          {/* Health Bars */}
           {gamePhase === 'battle' && (
             <div className='absolute top-28 left-0 w-full px-4 flex justify-between z-10'>
               <HealthBar
@@ -328,7 +334,6 @@ export default function MinigamePage() {
             </div>
           )}
 
-          {/* ================= POPUP MODAL JAWABAN ================= */}
           {showAnswerModal && (
             <div className='absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-6 animate-in fade-in duration-200'>
               <div className='bg-white w-full max-h-[80%] overflow-y-auto rounded-3xl p-5 shadow-2xl border-4 border-yellow-400 animate-in zoom-in-95 duration-200'>
@@ -345,7 +350,6 @@ export default function MinigamePage() {
                   </button>
                 </div>
 
-                {/* Pertanyaan */}
                 <p className='text-sm text-gray-500 mb-4 pb-4 border-b border-gray-100'>
                   {currentQ.text}
                 </p>
@@ -365,7 +369,6 @@ export default function MinigamePage() {
             </div>
           )}
 
-          {/* ================= DIALOG BOX BAWAH ================= */}
           <div className='absolute bottom-6 left-4 right-4 z-20'>
             {activeSpeaker && (
               <div
@@ -384,9 +387,6 @@ export default function MinigamePage() {
                 {activeText}
               </p>
 
-              {/* --- CONTROLS --- */}
-
-              {/* 1. Tombol NEXT (Story atau Feedback) */}
               {(gamePhase === 'story' ||
                 (gamePhase === 'battle' && feedbackText)) && (
                 <div className='flex justify-end mt-2'>
@@ -401,7 +401,6 @@ export default function MinigamePage() {
                 </div>
               )}
 
-              {/* 2. Tombol BUKA POPUP (Saat Battle & Belum Jawab) */}
               {gamePhase === 'battle' && !feedbackText && (
                 <div className='mt-4'>
                   <button

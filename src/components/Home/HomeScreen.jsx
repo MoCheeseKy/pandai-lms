@@ -25,22 +25,24 @@ export default function HomeScreen() {
         </button>
       </div>
 
-      <h1 className='text-[28px] font-bold mb-8 flex items-center gap-2 bg-linear-to-r from-black to-[#003EC0] bg-clip-text text-transparent'>
+      <h1 className='text-[28px] font-bold mb-8 flex items-center gap-2 bg-linear-to-r from-black to-[#003EC0] bg-clip-text text-transparent b'>
         Hellooo, Mozart{' '}
         <div className='bg-logo-only bg-cover bg-no-repeat w-8 aspect-42/34 inline-block animate-bounce'></div>
       </h1>
 
       <div className='relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 shadow-xl shadow-blue-200/50 group'>
-        <div className='absolute inset-0 bg-gradient-to-b from-primary-blue to-[#7d6dfb] p-6 flex flex-col items-center text-center'>
-          <span className='bg-white/20 backdrop-blur-md text-white text-[10px] font-medium px-4 py-1.5 rounded-full mb-4 border border-white/10'>
-            22 November 2025
-          </span>
+        <div className='absolute inset-0 bg-gradient-to-b from-primary-blue to-[#7d6dfb]  '>
+          <div className='h-full p-6 flex flex-col items-center text-center bg-fire-panda bg-no-repeat bg-[center_bottom_-1rem]'>
+            <span className='bg-white/20 backdrop-blur-md text-white text-[10px] font-medium px-4 py-1.5 rounded-full mb-4 border border-white/10'>
+              19 Desember 2025
+            </span>
 
-          <h2 className='text-white text-xl font-bold leading-snug mb-1'>
-            Nilai Matematika kamu
-            <br />
-            naik 30% minggu ini🔥
-          </h2>
+            <h2 className='text-white text-xl font-bold leading-snug mb-1'>
+              Nilai Matematika kamu
+              <br />
+              naik 30% minggu ini🔥
+            </h2>
+          </div>
         </div>
 
         <div className='absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/30 rounded-full blur-3xl'></div>

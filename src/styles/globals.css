@@ -45,6 +45,14 @@
   --background-image-math-icon: url('/images/math-icon.svg');
   --background-image-physc-icon: url('/images/physc-icon.svg');
   --background-image-pkn-icon: url('/images/pkn-icon.svg');
+  --background-image-fire-panda: url('/images/fire-panda.png');
+  /*  */
+  --background-image-alien-full: url('/images/alien-full.svg');
+  --background-image-alien-half: url('/images/alien-half.svg');
+  --background-image-alien-low: url('/images/alien-low.svg');
+  --background-image-budi-full: url('/images/budi-full.svg');
+  --background-image-budi-low: url('/images/budi-low.svg');
+  --background-image-minigame-bg: url('/images/minigame-bg.svg');
 
   --color-primary-blue: #0041c9;
   --color-primary-purple: #a241ff;

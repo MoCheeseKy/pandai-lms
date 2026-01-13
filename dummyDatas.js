@@ -1,70 +1,6 @@
 const DummyDataSets = [
   // =================================================================
-  // 1. BAHASA INDONESIA
-  // =================================================================
-  {
-    id: 1,
-    title: 'Bahasa Indonesia',
-    progress: 3,
-    icon: 'bg-ind-icon',
-    isRecommended: false,
-    chapterCount: 3,
-    chapters: [
-      {
-        chapterId: 1,
-        chapterTitle: 'Bab 1: Menyusun Laporan Hasil Observasi',
-        isCompleted: true,
-        status: 'sudah dipelajari',
-      },
-      {
-        chapterId: 2,
-        chapterTitle: 'Bab 2: Mengembangkan Pendapat dalam Eksposisi',
-        isCompleted: true,
-        status: 'sudah dipelajari',
-      },
-      {
-        chapterId: 3,
-        chapterTitle: 'Bab 3: Mengelola Informasi dalam Ceramah',
-        isCompleted: true,
-        status: 'sudah dipelajari',
-      },
-    ],
-  },
-
-  // =================================================================
-  // 2. BAHASA INGGRIS
-  // =================================================================
-  {
-    id: 2,
-    title: 'Bahasa Inggris',
-    progress: 2,
-    icon: 'bg-eng-icon',
-    isRecommended: false,
-    chapterCount: 3,
-    chapters: [
-      {
-        chapterId: 1,
-        chapterTitle: 'Chapter 1: Offers and Suggestions',
-        isCompleted: true,
-        status: 'sudah dipelajari',
-      },
-      {
-        chapterId: 2,
-        chapterTitle: 'Chapter 2: Opinions and Thoughts',
-        isCompleted: true,
-        status: 'sudah dipelajari',
-      },
-      {
-        chapterId: 3,
-        chapterTitle: 'Chapter 3: Formal Invitations',
-        isCompleted: false,
-        status: 'sedang dipelajari',
-      },
-    ],
-  },
-
-  // =================================================================
-  // 3. MATEMATIKA (Extended Content)
+  // 1. MATEMATIKA
   // =================================================================
   {
     id: 3,
@@ -895,6 +831,70 @@ const DummyDataSets = [
             },
           ],
         },
+      },
+    ],
+  },
+
+  // =================================================================
+  // 2. BAHASA INDONESIA
+  // =================================================================
+  {
+    id: 2,
+    title: 'Bahasa Indonesia',
+    progress: 3,
+    icon: 'bg-ind-icon',
+    isRecommended: false,
+    chapterCount: 3,
+    chapters: [
+      {
+        chapterId: 1,
+        chapterTitle: 'Bab 1: Menyusun Laporan Hasil Observasi',
+        isCompleted: true,
+        status: 'sudah dipelajari',
+      },
+      {
+        chapterId: 2,
+        chapterTitle: 'Bab 2: Mengembangkan Pendapat dalam Eksposisi',
+        isCompleted: true,
+        status: 'sudah dipelajari',
+      },
+      {
+        chapterId: 3,
+        chapterTitle: 'Bab 3: Mengelola Informasi dalam Ceramah',
+        isCompleted: true,
+        status: 'sudah dipelajari',
+      },
+    ],
+  },
+
+  // =================================================================
+  // 3. BAHASA INGGRIS
+  // =================================================================
+  {
+    id: 3,
+    title: 'Bahasa Inggris',
+    progress: 2,
+    icon: 'bg-eng-icon',
+    isRecommended: false,
+    chapterCount: 3,
+    chapters: [
+      {
+        chapterId: 1,
+        chapterTitle: 'Chapter 1: Offers and Suggestions',
+        isCompleted: true,
+        status: 'sudah dipelajari',
+      },
+      {
+        chapterId: 2,
+        chapterTitle: 'Chapter 2: Opinions and Thoughts',
+        isCompleted: true,
+        status: 'sudah dipelajari',
+      },
+      {
+        chapterId: 3,
+        chapterTitle: 'Chapter 3: Formal Invitations',
+        isCompleted: false,
+        status: 'sedang dipelajari',
       },
     ],
   },
